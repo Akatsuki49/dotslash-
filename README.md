@@ -1,4 +1,4 @@
-# MyAoo
+# MyApp
 
 An edtech app with courses, videos, chat, and FAQ.
 

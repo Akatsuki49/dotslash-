@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "523408815634",
+    "project_id": "dotslash2024",
+    "storage_bucket": "dotslash2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523408815634:android:44aadfcf273373917c4acb",
+        "android_client_info": {
+          "package_name": "com.example.dotslash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBNzVfGyYoIMf-QAgPIBnLusS0ekPuWfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

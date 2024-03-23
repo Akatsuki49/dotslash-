@@ -5,7 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CourseListView extends StatefulWidget {
-  const CourseListView({Key? key}) : super(key: key);
+  final String courseID;
+
+  CourseListView({Key? key, required this.courseID}) : super(key: key);
+
+  // const CourseListView({Key? key}) : super(key: key);
 
   @override
   State<CourseListView> createState() => _CourseListViewState();
@@ -113,12 +117,15 @@ class _CourseListViewState extends State<CourseListView> {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: GestureDetector(
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => VideoView(),
-          ),
-        ),
+        onTap: () {
+          // print(widget.courseID);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => VideoView(courseID: widget.courseID),
+            ),
+          );
+        },
         child: Container(
           // height: 100,
           width: MediaQuery.of(context).size.width - 50,

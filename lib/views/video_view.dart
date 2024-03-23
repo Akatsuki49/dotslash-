@@ -46,7 +46,7 @@ class _VideoViewState extends State<VideoView> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Container(
                   // height: 250,
                   width: MediaQuery.of(context).size.width,
@@ -100,65 +100,73 @@ class _VideoViewState extends State<VideoView> {
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10),
-              //   child: rowwidget(
-              //       "Compiler Design",
-              //       "UE21CS341B",
-              //       "41",
-              //       "Lexical Analysis",
-              //       "Syntax Analysis",
-              //       "Syntax Trees - SDTs",
-              //       "Code Generation"),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10),
-              //   child: rowwidget(
-              //       "Compiler Design",
-              //       "UE21CS341B",
-              //       "41",
-              //       "Lexical Analysis",
-              //       "Syntax Analysis",
-              //       "Syntax Trees - SDTs",
-              //       "Code Generation"),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10),
-              //   child: rowwidget(
-              //       "Compiler Design",
-              //       "UE21CS341B",
-              //       "41",
-              //       "Lexical Analysis",
-              //       "Syntax Analysis",
-              //       "Syntax Trees - SDTs",
-              //       "Code Generation"),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10),
-              //   child: rowwidget(
-              //       "Compiler Design",
-              //       "UE21CS341B",
-              //       "41",
-              //       "Lexical Analysis",
-              //       "Syntax Analysis",
-              //       "Syntax Trees - SDTs",
-              //       "Code Generation"),
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.all(10),
-              //   child: rowwidget(
-              //       "Compiler Design",
-              //       "UE21CS341B",
-              //       "41",
-              //       "Lexical Analysis",
-              //       "Syntax Analysis",
-              //       "Syntax Trees - SDTs",
-              //       "Code Generation"),
-              // ),
+              upnextwidgets(),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: Image.asset('assets/images/Need_Help.png',
+                    height: 90, width: 350),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 130),
+                child:
+                    Image.asset('assets/images/VP.png', height: 95, width: 150),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: GestureDetector(
+                  // onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  //   builder: (context) => ChatPage(),
+                  // )),
+                  child: Image.asset('assets/images/swipeUp.png',
+                      height: 100, width: 350),
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget upnextwidgets() {
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: BouncingScrollPhysics(),
+        child: Row(children: List.generate(10, (index) => nextwidget())));
+  }
+
+  Widget nextwidget() {
+    return Image.asset(
+      'assets/images/NextVids.png',
+      height: 150,
+      width: 150,
+    );
+    // return Container(
+    //   // height: 200,
+    //   width: 150,
+    //   // color: Colors.white,
+    //   child: Column(
+    //     children: [
+    //       Image.asset(
+    //         'assets/images/av_summary1.png',
+    //         fit: BoxFit.cover,
+    //         // height: 55,
+    //         // width: 90,
+    //       ),
+    //       // SizedBox(height: 2),
+    //       Text(
+    //         'Grid Computing',
+    //         style: GoogleFonts.inter(color: Colors.white, fontSize: 15),
+    //       ),
+    //       Padding(
+    //         padding: const EdgeInsets.only(left: 15),
+    //         child: Text(
+    //           'Cloud Computing (UE21CS541A)',
+    //           style: GoogleFonts.inter(color: Color(0xff8C8C8C), fontSize: 12),
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }

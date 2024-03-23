@@ -1,3 +1,4 @@
+import 'package:dotslash/views/chat_page.dart';
 import 'package:dotslash/views/video_view.dart';
 import 'package:flutter/material.dart';
 import 'package:dotslash/auth/firebase_auth_methods.dart';

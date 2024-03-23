@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'video_view.dart';
 import 'faq_view.dart';
 import 'package:dotslash/models/video.dart';
+import 'package:dotslash/auth/firebase_auth_methods.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -9,6 +11,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
   List<Video> videos = [
     Video(
       id: '1',
@@ -32,6 +35,11 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Talk To Videos'),
+        leading: GestureDetector(
+            onTap: () {
+              FirebaseAuthMethods(_auth).signOut(context);
+            },
+            child: Icon(Icons.exit_to_app)),
       ),
       body: Column(
         children: [

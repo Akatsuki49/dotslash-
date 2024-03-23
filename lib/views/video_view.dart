@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class VideoView extends StatefulWidget {
-  const VideoView({Key? key}) : super(key: key);
+  final String courseID;
+  VideoView({Key? key, required this.courseID}) : super(key: key);
+  // const VideoView({Key? key}) : super(key: key);
 
   @override
   State<VideoView> createState() => _VideoViewState();
@@ -85,7 +87,12 @@ class _VideoViewState extends State<VideoView> {
                           ),
                         ),
                         VideoPlayerWidget(
-                          videoAsset: 'assets/videos/Av_video1.mp4',
+                          // videoAsset: 'assets/videos/V1.mp4',
+                          videoAsset: widget.courseID == "UE21CS341B"
+                              ? 'assets/videos/V1.mp4'
+                              : widget.courseID == "UE21CS351B"
+                                  ? 'assets/videos/V2.mp4'
+                                  : 'assets/videos/V3.mp4',
                         ),
                       ],
                     ),

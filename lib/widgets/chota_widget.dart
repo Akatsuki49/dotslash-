@@ -6,8 +6,13 @@ import 'time_widget.dart'; // Import your timewidget file
 class ChotaWidget extends StatelessWidget {
   final String unitTitle;
   final String unitNo;
+  final String courseID;
 
-  const ChotaWidget({Key? key, required this.unitTitle, required this.unitNo})
+  const ChotaWidget(
+      {Key? key,
+      required this.unitTitle,
+      required this.unitNo,
+      required this.courseID})
       : super(key: key);
 
   @override
@@ -17,7 +22,7 @@ class ChotaWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: () => Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => CourseListView()),
+          MaterialPageRoute(builder: (_) => CourseListView(courseID: courseID)),
         ),
         child: Container(
           decoration: BoxDecoration(

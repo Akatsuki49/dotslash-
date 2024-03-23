@@ -67,6 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '523408815634',
     projectId: 'dotslash2024',
     storageBucket: 'dotslash2024.appspot.com',
+    androidClientId: '523408815634-ftnjvn47j07q0o723sc3d7gpl6v1rn9i.apps.googleusercontent.com',
+    iosClientId: '523408815634-bte24oic4absr4dqjhnob03v40peu88i.apps.googleusercontent.com',
     iosBundleId: 'com.example.dotslash',
   );
 
@@ -76,6 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '523408815634',
     projectId: 'dotslash2024',
     storageBucket: 'dotslash2024.appspot.com',
+    androidClientId: '523408815634-ftnjvn47j07q0o723sc3d7gpl6v1rn9i.apps.googleusercontent.com',
+    iosClientId: '523408815634-51qtff3ti5qagpdaqsmcl2qfaf29j6g3.apps.googleusercontent.com',
     iosBundleId: 'com.example.dotslash.RunnerTests',
   );
 }

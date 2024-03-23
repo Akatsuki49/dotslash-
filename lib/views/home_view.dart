@@ -2,8 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:dotslash/views/list_view.dart';
 import 'video_view.dart';
-import 'faq_view.dart';
+// import 'faq_view.dart';
 // import 'package:dotslash/models/video.dart';
 import 'package:dotslash/auth/firebase_auth_methods.dart';
 
@@ -14,23 +15,6 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  // List<Video> videos = [
-  //   Video(
-  //     id: '1',
-  //     title: 'Introduction to Flutter',
-  //     url: 'https://example.com/flutter-intro.mp4',
-  //     description: 'Learn the basics of Flutter development',
-  //     materials: ['https://example.com/flutter-intro.pdf'],
-  //   ),
-  //   Video(
-  //     id: '2',
-  //     title: 'State Management in Flutter',
-  //     url: 'https://example.com/state-management.mp4',
-  //     description: 'Explore different state management techniques',
-  //     materials: ['https://example.com/state-management.pdf'],
-  //   ),
-  //   // Add more videos here
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -272,48 +256,53 @@ class _HomeViewState extends State<HomeView> {
   Widget chotawidget(String unitTitle, String unitNo) {
     return Padding(
         padding: EdgeInsets.only(left: 15, right: 5),
-        child: Container(
-          // height: 150,
-          // width: 150,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 30),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(unitNo,
-                        style: GoogleFonts.josefinSans(
-                            fontSize: 23,
-                            color: Color(0xff2C2C2C),
-                            fontWeight: FontWeight.bold)),
+        child: GestureDetector(
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => CourseListView(),
+          )),
+          child: Container(
+            // height: 150,
+            // width: 150,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 30),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(unitNo,
+                          style: GoogleFonts.josefinSans(
+                              fontSize: 23,
+                              color: Color(0xff2C2C2C),
+                              fontWeight: FontWeight.bold)),
+                    ),
                   ),
-                ),
-                SizedBox(height: 10),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(unitTitle,
-                      style: GoogleFonts.inter(
-                          color: Color(0xff2C2C2C),
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500)),
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text('+12 more',
-                      style: GoogleFonts.inter(
-                          color: Color(0xffAEAEAE),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500)),
-                ),
-                SizedBox(height: 12),
-                timewidget(),
-              ],
+                  SizedBox(height: 10),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(unitTitle,
+                        style: GoogleFonts.inter(
+                            color: Color(0xff2C2C2C),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500)),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('+12 more',
+                        style: GoogleFonts.inter(
+                            color: Color(0xffAEAEAE),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500)),
+                  ),
+                  SizedBox(height: 12),
+                  timewidget(),
+                ],
+              ),
             ),
           ),
         ));

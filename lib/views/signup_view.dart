@@ -1,30 +1,29 @@
-import 'package:flutter/material.dart';
+import 'package:dotslash/views/home_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'home_view.dart';
-import 'signup_view.dart'; // Import the signup view
+import 'package:flutter/material.dart';
 
-class LoginView extends StatefulWidget {
+class SignupView extends StatefulWidget {
   @override
-  _LoginViewState createState() => _LoginViewState();
+  _SignupViewState createState() => _SignupViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignupViewState extends State<SignupView> {
   final _formKey = GlobalKey<FormState>();
   String _email = '';
   String _password = '';
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-  void _login() async {
+  void _signup() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       try {
-        // Sign in user with email and password
-        var userCredential = await _auth.signInWithEmailAndPassword(
+        // Create user with email and password
+        var userCredential = await _auth.createUserWithEmailAndPassword(
           email: _email,
           password: _password,
         );
 
-        // Navigate to home view if login is successful
+        // Navigate to home view if signup is successful
         if (userCredential.user != null) {
           Navigator.pushReplacement(
             context,
@@ -32,35 +31,26 @@ class _LoginViewState extends State<LoginView> {
           );
         } else {
           throw FirebaseAuthException(
-            code: 'sign_in_failed',
-            message: 'Failed to sign in with email and password',
+            code: 'sign_up_failed',
+            message: 'Failed to create user with email and password',
           );
         }
       } catch (e) {
         // Handle any errors
-        print('Error logging in: $e');
+        print('Error signing up: $e');
         // Show error message to the user
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content:
-              Text('Error logging in. Please check your email and password.'),
+          content: Text('Error signing up. Please try again.'),
         ));
       }
     }
-  }
-
-  // Function to navigate to signup view
-  void _goToSignup() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => SignupView()),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('Sign Up'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -95,15 +85,8 @@ class _LoginViewState extends State<LoginView> {
               ),
               SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: _login,
-                child: Text('Login'),
-              ),
-              SizedBox(
-                  height:
-                      8.0), // Add some space between the login and signup buttons
-              TextButton(
-                onPressed: _goToSignup,
-                child: Text('Not registered yet? Sign up now'),
+                onPressed: _signup,
+                child: Text('Sign Up'),
               ),
             ],
           ),

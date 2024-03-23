@@ -1,11 +1,12 @@
 import 'package:dotslash/auth/firebase_auth_methods.dart';
+import 'package:dotslash/views/chat_page.dart';
 import 'package:dotslash/widgets/video_player_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class VideoView extends StatefulWidget {
-  const VideoView({super.key});
+  const VideoView({Key? key}) : super(key: key);
 
   @override
   State<VideoView> createState() => _VideoViewState();
@@ -13,6 +14,9 @@ class VideoView extends StatefulWidget {
 
 class _VideoViewState extends State<VideoView> {
   FirebaseAuth _auth = FirebaseAuth.instance;
+  bool _showSwipeButton =
+      true; // Flag to control the visibility of the swipe button
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +27,7 @@ class _VideoViewState extends State<VideoView> {
           scrollDirection: Axis.vertical,
           physics: BouncingScrollPhysics(),
           child: Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.start, // Align children to the start
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 30, right: 5),
@@ -48,7 +51,6 @@ class _VideoViewState extends State<VideoView> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Container(
-                  // height: 250,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -83,7 +85,8 @@ class _VideoViewState extends State<VideoView> {
                           ),
                         ),
                         VideoPlayerWidget(
-                            videoAsset: 'assets/videos/Av_video1.mp4'),
+                          videoAsset: 'assets/videos/Av_video1.mp4',
+                        ),
                       ],
                     ),
                   ),
@@ -100,25 +103,43 @@ class _VideoViewState extends State<VideoView> {
                   ),
                 ),
               ),
-              upnextwidgets(),
+              upNextWidgets(),
               Padding(
                 padding: const EdgeInsets.only(left: 30),
-                child: Image.asset('assets/images/Need_Help.png',
-                    height: 90, width: 350),
+                child: Image.asset(
+                  'assets/images/Need_Help.png',
+                  height: 90,
+                  width: 350,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 130),
-                child:
-                    Image.asset('assets/images/VP.png', height: 95, width: 150),
+                child: Image.asset(
+                  'assets/images/VP.png',
+                  height: 95,
+                  width: 150,
+                ),
               ),
+              // if (_showSwipeButton) // Only show the swipe button if _showSwipeButton is true
               Padding(
                 padding: const EdgeInsets.only(left: 30),
-                child: GestureDetector(
-                  // onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  //   builder: (context) => ChatPage(),
-                  // )),
-                  child: Image.asset('assets/images/swipeUp.png',
-                      height: 100, width: 350),
+                child: Dismissible(
+                  key: UniqueKey(),
+                  direction: DismissDirection.up,
+                  onDismissed: (_) {
+                    setState(() {
+                      _showSwipeButton =
+                          false; // Hide the swipe button after dismissing
+                    });
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ChatPage(),
+                    ));
+                  },
+                  child: Image.asset(
+                    'assets/images/swipeUp.png',
+                    height: 100,
+                    width: 350,
+                  ),
                 ),
               ),
             ],
@@ -128,45 +149,24 @@ class _VideoViewState extends State<VideoView> {
     );
   }
 
-  Widget upnextwidgets() {
+  Widget upNextWidgets() {
     return SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        physics: BouncingScrollPhysics(),
-        child: Row(children: List.generate(10, (index) => nextwidget())));
+      scrollDirection: Axis.horizontal,
+      physics: BouncingScrollPhysics(),
+      child: Row(
+        children: List.generate(
+          10,
+          (index) => nextWidget(),
+        ),
+      ),
+    );
   }
 
-  Widget nextwidget() {
+  Widget nextWidget() {
     return Image.asset(
       'assets/images/NextVids.png',
       height: 150,
       width: 150,
     );
-    // return Container(
-    //   // height: 200,
-    //   width: 150,
-    //   // color: Colors.white,
-    //   child: Column(
-    //     children: [
-    //       Image.asset(
-    //         'assets/images/av_summary1.png',
-    //         fit: BoxFit.cover,
-    //         // height: 55,
-    //         // width: 90,
-    //       ),
-    //       // SizedBox(height: 2),
-    //       Text(
-    //         'Grid Computing',
-    //         style: GoogleFonts.inter(color: Colors.white, fontSize: 15),
-    //       ),
-    //       Padding(
-    //         padding: const EdgeInsets.only(left: 15),
-    //         child: Text(
-    //           'Cloud Computing (UE21CS541A)',
-    //           style: GoogleFonts.inter(color: Color(0xff8C8C8C), fontSize: 12),
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }

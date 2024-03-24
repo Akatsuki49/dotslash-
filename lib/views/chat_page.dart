@@ -16,6 +16,8 @@ class Message {
 }
 
 class ChatPage extends StatefulWidget {
+  final String courseID;
+  const ChatPage({Key? key, required this.courseID}) : super(key: key);
   @override
   _ChatPageState createState() => _ChatPageState();
 }
@@ -177,9 +179,10 @@ class _ChatPageState extends State<ChatPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('https://5c57-1-6-74-117.ngrok-free.app/ask_doubt'),
+        Uri.parse('https://4ee5-1-6-74-117.ngrok-free.app/ask_doubt'),
         body: {
-          'courseID': "UE21CS342BA3", // Replace with actual course ID
+          // 'courseID': "UE21CS342BA3", // Replace with actual course ID
+          'courseID': widget.courseID,
           'question': messageText,
         },
       );

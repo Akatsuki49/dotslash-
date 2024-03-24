@@ -139,7 +139,7 @@ class _VideoViewState extends State<VideoView> {
                           false; // Hide the swipe button after dismissing
                     });
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => ChatPage(),
+                      builder: (context) => ChatPage(courseID: widget.courseID),
                     ));
                   },
                   child: Image.asset(

@@ -78,6 +78,16 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                     child: Column(
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 60.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset('assets/images/VP.png',
+                                  height: 100, width: 100),
+                            ],
+                          ),
+                        ),
                         Expanded(
                           child: ListView.builder(
                             reverse:
@@ -101,7 +111,7 @@ class _ChatPageState extends State<ChatPage> {
             ),
             Positioned(
               top: MediaQuery.of(context).padding.top + 2,
-              left: MediaQuery.of(context).size.width * 0.1,
+              left: MediaQuery.of(context).size.width * 0.05,
               child: Padding(
                 padding: EdgeInsets.only(left: 30, right: 5),
                 child: Row(

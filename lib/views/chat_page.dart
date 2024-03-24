@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dotslash/widgets/filled_text_field.dart';
 import 'package:dotslash/widgets/message_widget.dart';
 import 'package:dotslash/views/video_view.dart';
+import 'package:http/http.dart' as http;
 
 class Message {
   final String text;
@@ -159,15 +160,44 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
-  void _getBotReply(String messageText) {
+  // void _getBotReply(String messageText) {
+  //   // Simulate a delay to mimic a backend request
+  //   Timer(Duration(seconds: 2), () {
+  //     String botReply = _generateBotReply(messageText);
+  //     _addBotReply(botReply);
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   });
+  void _getBotReply(String messageText) async {
     // Simulate a delay to mimic a backend request
-    Timer(Duration(seconds: 2), () {
-      String botReply = _generateBotReply(messageText);
-      _addBotReply(botReply);
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final response = await http.post(
+        Uri.parse('https://5c57-1-6-74-117.ngrok-free.app/ask_doubt'),
+        body: {
+          'courseID': "UE21CS342BA3", // Replace with actual course ID
+          'question': messageText,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        String botReply = response.body;
+        _addBotReply(botReply);
+      } else {
+        throw Exception('Failed to fetch bot reply');
+      }
+    } catch (e) {
+      print('Error: $e');
+      // Handle error here
+    } finally {
       setState(() {
         _isLoading = false;
       });
-    });
+    }
   }
 
   void _addBotReply(String botReply) {

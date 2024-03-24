@@ -107,10 +107,7 @@ class _EmailPasswordLoginState extends State<EmailPasswordLogin> {
               padding: const EdgeInsets.only(left: 30.0, bottom: 49.0),
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
-                  );
+                  Navigator.pop(context);
                 },
                 child: Image.asset(
                   'assets/images/pesu.png',

@@ -10,13 +10,14 @@
 
 ## Introduction
 
-padh.ai is an edtech application of this framework.
+*padh.ai* is An edtech app with courses, videos, chat, and FAQ.
 
 What padh.ai aims at solving:
 - Limited 1-on-1 interaction in online lectures
 - Students getting distracted while looking up topics they need help with.
+- Making doubt-solving more convenient and fast, feeding curiosity instantly.
 
-This is An edtech app with courses, videos, chat, and FAQ.
+Thus, enhancing overall academic performance and confidence of students
 
 ## Features
 

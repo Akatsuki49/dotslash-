@@ -2,11 +2,10 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Screenshots](#screenshots)
+- [Features](#features)
+- [ScreenShots](#screenshots)
 - [How It Works](#how-it-works)
-- [Tech Stack](#tech-stack)
-- [Contributors](#contributors)
-- [Team DeadlineDashers](#team-DeadlineDashers)
+- [Tech Used](#tech-used)
 
 ## Introduction
 
@@ -79,7 +78,7 @@ Here's how it works:
 4. **Advanced Query Processing**
    - Using OpenAI’s GPT-3.5 turbo, student questions are matched with relevant content through FAISS, minimizing errors and enhancing the learning experience.
 
-## Tech Used
+## Tech-Used
 
 - **Frontend:** Flutter - An open source cross-platform UI framework, using which the beautiful screens of bh.AI were built
 - **Backend:** FastAPI - Backend for the app, uses Python, performs RAG embeddings on content as well as queries the LLM using system and user prompts

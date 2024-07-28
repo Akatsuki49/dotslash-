@@ -61,7 +61,7 @@ Thus, enhancing overall academic performance and confidence of students
 
 ## How It Works!
 
-padh.AI is built using Flutter for the frontend, FastAPI for the backend, OpenAI's CPT-3.5 turbo for querying, FAISS (Facebook AI Similarity Search) library in python for RAG (Retrieval Augmented Generation) and Firebase for authentication. 
+padh.AI is built using Flutter for the frontend, FastAPI for the backend, OpenAI's GPT-3.5 turbo for querying, FAISS (Facebook AI Similarity Search) library in python for RAG (Retrieval Augmented Generation) and Firebase for authentication. 
 Here's how it works:
 
 1. **User Authentication:**

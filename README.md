@@ -80,7 +80,7 @@ Here's how it works:
 
 ## Tech-Used
 
-- **Frontend:** Flutter - An open source cross-platform UI framework, using which the beautiful screens of bh.AI were built
+- **Frontend:** Flutter - An open source cross-platform UI framework, using which the beautiful screens of padh.Ai were built
 - **Backend:** FastAPI - Backend for the app, uses Python, performs RAG embeddings on content as well as queries the LLM using system and user prompts
 - **langchain:** Framework to integrate LLMs customized for different use Cases
 - **FAISS(Facebook AI Similarity Search):** A library for efficient similarity search and clustering of dense vectors.
